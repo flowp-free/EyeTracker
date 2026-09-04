@@ -12,6 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 # ------------------------------------------------------------
 
 find_package(PkgConfig REQUIRED)
+find_package(SDL2_ttf REQUIRED)
 find_package(OpenCV REQUIRED)
 
 pkg_check_modules(
@@ -40,7 +41,8 @@ find_package(assimp REQUIRED)
 
 add_executable(
     eye_project
-
+    
+    src/TextOverlay.cpp
     src/main.cpp
     src/Camera.cpp
     src/Mesh.cpp
@@ -80,7 +82,6 @@ target_include_directories(
 target_link_directories(
     eye_project
     PRIVATE
-
     ${SDL2_LIBRARY_DIRS}
     ${SDL2_IMAGE_LIBRARY_DIRS}
     ${LIBCAMERA_LIBRARY_DIRS}
@@ -112,7 +113,7 @@ target_link_libraries(
     ${SDL2_LIBRARIES}
     ${SDL2_IMAGE_LIBRARIES}
     ${LIBCAMERA_LIBRARIES}
-
+    SDL2_ttf::SDL2_ttf
     assimp::assimp
 
     GLESv2

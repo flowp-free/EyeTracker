@@ -1,5 +1,6 @@
 #pragma once
 
+#include "TextOverlay.h"
 #include <chrono>
 #include "BackgroundVideo.h"
 #include "Config.h"
@@ -34,7 +35,7 @@ public:
 
 private:
 
-    
+    TextOverlay textOverlay;
     float idleTargetX = 0.0f;
     float idleTargetY = 0.0f;
 

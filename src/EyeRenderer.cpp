@@ -763,6 +763,19 @@ bool EyeRenderer::start(const Config& newConfig)
     stop();
     return false;
            }
+    
+    if (!textOverlay.start(
+          "assets/fonts/pixel.ttf",
+          48
+       ))
+    {
+       std::cerr << "Could not start text overlay.\n";
+
+       stop();
+
+       return false;
+    }
+
 
     // --------------------------------------------------------
     // OpenGL view camera
@@ -906,6 +919,13 @@ void EyeRenderer::render(
         return;
     }
     
+    textOverlay.setVisible(faceDetected);
+    
+    if (faceDetected){
+        
+	    textOverlay.update("IM LOOKING AT YOU.");
+    }
+
     backgroundVideo.update();
 
     for (std::size_t eyeIndex = 0;
@@ -1439,6 +1459,11 @@ void EyeRenderer::render(
         );
 
         glBindVertexArray(0);
+        
+        textOverlay.render(
+                  eye.width,
+                  eye.height
+		  );
 
         SDL_GL_SwapWindow(
             eye.window
@@ -1605,7 +1630,7 @@ void EyeRenderer::stop()
                 nullptr;
         }
     }
-
+    textOverlay.stop();
     eyes.clear();
 
     IMG_Quit();
