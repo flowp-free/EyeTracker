@@ -1,0 +1,25 @@
+EyeTracker/
+│
+├── CMakeLists.txt
+├── src/
+│   ├── main.cpp
+│   ├── Shader.cpp
+│   ├── Shader.h
+│   ├── Camera.cpp
+│   ├── Camera.h
+│   ├── Mesh.cpp
+│   ├── Mesh.h
+│   ├── Model.cpp
+│   └── Model.h
+│
+├── shaders/
+│   ├── vertex.glsl
+│   └── fragment.glsl
+│
+├── assets/
+│   ├── eye.glb
+│   └── textures/
+│
+├── external/
+│
+└── build/
